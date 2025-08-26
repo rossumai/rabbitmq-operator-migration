@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/component: rabbitmq-operator
+    app.kubernetes.io/name: rabbitmq-cluster-operator
+    app.kubernetes.io/part-of: rabbitmq
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+  name: rabbitmq-cluster-operator-rabbitmq-system-view
+rules:
+  - apiGroups:
+      - rabbitmq.com
+    resources:
+      - rabbitmqclusters
+      - rabbitmqclusters/finalizers
+    verbs:
+      - get
+      - list
+      - watch

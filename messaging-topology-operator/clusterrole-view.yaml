@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/component: rabbitmq-operator
+    app.kubernetes.io/name: messaging-topology-operator
+    app.kubernetes.io/part-of: rabbitmq
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+  name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator-view
+rules:
+  - apiGroups:
+      - rabbitmq.com
+    resources:
+      - bindings
+      - exchanges
+      - federations
+      - operatorpolicies
+      - permissions
+      - policies
+      - queues
+      - schemareplications
+      - shovels
+      - superstreams
+      - topicpermissions
+      - users
+      - vhosts
+    verbs:
+      - get
+      - list
+      - watch
